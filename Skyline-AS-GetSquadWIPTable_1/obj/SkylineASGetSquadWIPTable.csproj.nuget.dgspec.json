@@ -1,0 +1,66 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\GIT\\Automation\\Skyline-AS-GetSquadWIPTable\\Skyline-AS-GetSquadWIPTable_1\\SkylineASGetSquadWIPTable.csproj": {}
+  },
+  "projects": {
+    "C:\\GIT\\Automation\\Skyline-AS-GetSquadWIPTable\\Skyline-AS-GetSquadWIPTable_1\\SkylineASGetSquadWIPTable.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\GIT\\Automation\\Skyline-AS-GetSquadWIPTable\\Skyline-AS-GetSquadWIPTable_1\\SkylineASGetSquadWIPTable.csproj",
+        "projectName": "Skyline-AS-GetSquadWIPTable_1",
+        "projectPath": "C:\\GIT\\Automation\\Skyline-AS-GetSquadWIPTable\\Skyline-AS-GetSquadWIPTable_1\\SkylineASGetSquadWIPTable.csproj",
+        "packagesPath": "C:\\Users\\AndreC.SKYLINE2\\.nuget\\packages\\",
+        "outputPath": "C:\\GIT\\Automation\\Skyline-AS-GetSquadWIPTable\\Skyline-AS-GetSquadWIPTable_1\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\AndreC.SKYLINE2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net462"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://devcore3:81/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net462": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net462": {
+          "dependencies": {
+            "SLC.CLib.Utility": {
+              "target": "Package",
+              "version": "[10.2.10.1, )"
+            },
+            "Skyline.DataMiner.Dev.Automation": {
+              "target": "Package",
+              "version": "[10.3.6, )"
+            },
+            "StyleCop.Analyzers": {
+              "target": "Package",
+              "version": "[1.1.118, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
