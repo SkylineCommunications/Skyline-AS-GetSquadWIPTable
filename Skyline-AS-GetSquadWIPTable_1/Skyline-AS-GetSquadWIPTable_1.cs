@@ -124,11 +124,8 @@ namespace UserDefinableApiScripts.Examples.ExistingWithEntryPoint
 			};
 		}
 
-
 		public void Run(Engine engine)
 		{ }
-
-		
 	}
 
 	public class WIPTask
