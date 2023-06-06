@@ -57,6 +57,7 @@ using Skyline.DataMiner.CommunityLibrary.Utility.Automation;
 using System.Collections.Generic;
 using Skyline.DataMiner.CommunityLibrary.Utility;
 using Skyline.DataMiner.Net.Apps.UserDefinableApis;
+using System;
 
 namespace UserDefinableApiScripts.Examples.ExistingWithEntryPoint
 {
@@ -79,6 +80,7 @@ namespace UserDefinableApiScripts.Examples.ExistingWithEntryPoint
 
 			List<WIPTask> wipTasks = new List<WIPTask>();
 			uint[] tableIDXs = new uint[] { 0, 1, 2, 3, 7, 8, 9, 10, 28, 29 };
+			uint[] tableIDXs2 = new uint[] { 0, 13, 18 };
 
 			foreach (var ecsElement in ecsElements)
 			{
@@ -87,7 +89,7 @@ namespace UserDefinableApiScripts.Examples.ExistingWithEntryPoint
 				List<WIPTask> squadTasks = engine.GetColumns(
 					ecsElement.DmaId,
 					ecsElement.ElementId,
-					1600,
+					(int)ECSParameters.WIPTable,
 					tableIDXs,
 					(string id, string title, double cycleTime, double leadTime, double inprogress, double investigation, double qualityassurance, double codereview, string currentStatus, string assignee) =>
 					{
@@ -106,10 +108,27 @@ namespace UserDefinableApiScripts.Examples.ExistingWithEntryPoint
 						};
 					}).ToList();
 
+				List<WIPTask> squadTasks2 = engine.GetColumns(
+					ecsElement.DmaId,
+					ecsElement.ElementId,
+					(int)ECSParameters.WIPTable,
+					tableIDXs2,
+					(string id, double waiting, double timestamp ) =>
+					{
+						return new WIPTask
+						{
+							ID = id,
+							WaitingTime = waiting,
+							WIPTimeStamp = DateTime.FromOADate(timestamp),
+						};
+					}).ToList();
+
 				foreach (var squadTask in squadTasks)
 				{
 					squadTask.SquadName = squadName;
 					squadTask.CollaborationURL = string.Format("https://collaboration.skyline.be/task/{0}", squadTask.ID);
+					squadTask.WaitingTime = squadTasks2.FirstOrDefault(x => x.ID == squadTask.ID).WaitingTime;
+					squadTask.WIPTimeStamp = squadTasks2.FirstOrDefault(x => x.ID == squadTask.ID).WIPTimeStamp;
 				}
 
 				wipTasks.AddRange(squadTasks);
@@ -155,5 +174,7 @@ namespace UserDefinableApiScripts.Examples.ExistingWithEntryPoint
 		public string CollaborationURL { get; set; }
 
 		public string SquadName { get; set; }
+
+		public DateTime WIPTimeStamp { get; set; }
 	}
 }
