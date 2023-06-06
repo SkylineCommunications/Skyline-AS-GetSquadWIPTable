@@ -131,17 +131,29 @@ namespace UserDefinableApiScripts.Examples.ExistingWithEntryPoint
 	public class WIPTask
 	{
 		public string ID { get; set; }
+
 		public string Title { get; set; }
+
 		public double CycleTime { get; set; }
+
 		public double LeadTime { get; set; }
+
 		public double InProgress { get; set; }
+
 		public double QualityAssurance { get; set; }
+
 		public double CodeReview { get; set; }
+
 		public double Investigation { get; set; }
+
 		public double WaitingTime { get; set; }
+
 		public string CurrentStatus { get; set; }
+
 		public string Assignee { get; set; }
+
 		public string CollaborationURL { get; set; }
+
 		public string SquadName { get; set; }
 	}
 }
